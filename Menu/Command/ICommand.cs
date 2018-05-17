@@ -1,7 +1,7 @@
 ﻿namespace console_bank_system.Menu.Command
 {
-	public abstract class Command
+	public interface ICommand
 	{
-		
+		void Execute();
 	}
 }
