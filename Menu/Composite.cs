@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace console_bank_system
+namespace console_bank_system.Menu
 {
 	public class Composite : Component
 	{
@@ -53,31 +53,5 @@ namespace console_bank_system
 
 			return false;
 		}
-	}
-
-	public class Button : Component
-	{
-		public Button(string name) : base(name)
-		{
-		}
-
-		public override bool Execute()
-		{
-			return false;
-		}
-	}
-
-	public abstract class Component
-	{
-		public string Name { get; protected set; }
-		protected bool HasParent { get; set; }
-
-		protected Component(string name, bool hasParent = true)
-		{
-			Name = name;
-			HasParent = hasParent;
-		}
-
-		public abstract bool Execute();
 	}
 }
