@@ -6,11 +6,9 @@ namespace console_bank_system.Menu
 	public class Composite : Component
 	{
 		private List<Component> children = new List<Component>();
-		private Bank _bank;
 
-		public Composite(string name, Bank bank, bool hasParent = true) : base(name, hasParent)
+		public Composite(string name, Component component, Bank bank) : base(name,component, bank)
 		{
-			_bank = bank;
 		}
 
 		public void AddChild(Component component)
@@ -30,11 +28,11 @@ namespace console_bank_system.Menu
 			{
 				Console.Clear();
 				Console.WriteLine("-----------------------------------------------");
-				Console.WriteLine($"\t\t{Name} " + ((_bank.IsLogin) ? _bank.Account.State.Amount + _bank.Account.State.Sign : ""));
+				Console.WriteLine($"\t\t{Name} " + ((Bank.IsLogin) ? Bank.Account.State.Amount + Bank.Account.State.Sign : ""));
 				Console.WriteLine("-----------------------------------------------");
 				for (int i = 0; i < children.Count; i++)
 					Console.WriteLine($"  {i + 1}. {children[i].Name}");
-				if (HasParent) Console.WriteLine("  'b'. Back to prev Menu");
+				if (Parent != null) Console.WriteLine("  'b'. Back to prev Menu");
 				Console.WriteLine("  'q'. Exit");
 				Console.WriteLine("-----------------------------------------------");
 				Console.Write("\t>> Select Command: ");

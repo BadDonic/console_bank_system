@@ -40,7 +40,7 @@ namespace console_bank_system.Menu.Command
 
 		public override bool Execute()
 		{
-			Bank.Account = new EmailDecorator(Bank.Account);
+			Bank.Account = new FacebookDecorator(Bank.Account);
 			Console.WriteLine("\t\tDONE!");
 			GetConsoleKey();
 			return true;
@@ -55,7 +55,7 @@ namespace console_bank_system.Menu.Command
 
 		public override bool Execute()
 		{
-			Bank.Account = new EmailDecorator(Bank.Account);
+			Bank.Account = new TelegramDecorator(Bank.Account);
 			Console.WriteLine("\t\tDONE!");
 			GetConsoleKey();
 			return true;

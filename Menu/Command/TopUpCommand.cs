@@ -12,9 +12,8 @@ namespace console_bank_system.Menu.Command
 		public override bool Execute()
 		{
 			Console.WriteLine($"\t >> Sum ({Bank.Account.State.Sign}): ");
-			Console.SetCursorPosition(26, 3);
-			Console.Clear();
 			Console.WriteLine("-----------------------------------------------");
+			Console.SetCursorPosition(26, 3);
 			string sum = Console.ReadLine();
 			Bank.Account.TopUpThePhone(Double.Parse(sum));
 			GetConsoleKey();
