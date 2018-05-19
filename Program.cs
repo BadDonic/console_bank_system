@@ -1,4 +1,7 @@
 ﻿using System;
+using System.Threading.Tasks;
+using console_bank_system.Menu;
+using console_bank_system.Menu.Command;
 
 namespace console_bank_system
 {
@@ -6,7 +9,8 @@ namespace console_bank_system
 	{
 		static void Main(string[] args)
 		{
-			Console.WriteLine("Hello World!");
+			Bank bank = new Bank();
+			bank.Start();
 		}
 	}
 }

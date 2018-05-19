@@ -1,15 +1,38 @@
 ﻿using System;
+using console_bank_system.Decorator;
 
 namespace console_bank_system.Menu.Command
 {
-	public class LoginCommand : ICommand
+	public class LoginCommand : AbstractCommand
 	{
-		public void Execute()
+		public LoginCommand(Bank bank) : base(bank)
 		{
+		}
+		public override bool Execute()
+		{
+			Console.WriteLine("\t >> Username: ");
 			Console.WriteLine("-----------------------------------------------");
-			Console.WriteLine("\t >> LOGIN << \t");
+			Console.WriteLine("\t >> Password: ");
 			Console.WriteLine("-----------------------------------------------");
-			Console.ReadKey();
+			Console.SetCursorPosition(23, 3);
+			string username = Console.ReadLine();
+			Console.SetCursorPosition(23, 5);
+			string password = Console.ReadLine();
+			Console.Clear();
+			bool result = true;
+			Console.WriteLine("-----------------------------------------------");
+			try
+			{
+				Bank.Login(new Account(username, password));
+				Console.WriteLine("\t\tDONE!");
+				result = false;
+			}
+			catch (Exception e)
+			{
+				Console.WriteLine(e.Message);
+			}
+			GetConsoleKey();
+			return result;
 		}
 	}
 }

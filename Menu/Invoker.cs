@@ -5,8 +5,8 @@ namespace console_bank_system.Menu
 {
 	public class Invoker : Component
 	{
-		private ICommand Command { get; set; }
-		public Invoker(string name, ICommand command) : base(name)
+		private AbstractCommand Command { get; set; }
+		public Invoker(string name, AbstractCommand command) : base(name)
 		{
 			Command = command;
 		}
@@ -15,10 +15,10 @@ namespace console_bank_system.Menu
 		{
 			Console.Clear();
 			Console.WriteLine("-----------------------------------------------");
-			Console.WriteLine($"\t{Name}\t");
+			Console.WriteLine($"\t\t{Name}\t");
 			Console.WriteLine("-----------------------------------------------");
-			Command?.Execute();
-			return false;
+			bool res = Command?.Execute() ?? true;
+			return res;
 		}
 	}
 }
