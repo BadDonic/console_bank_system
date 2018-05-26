@@ -8,81 +8,75 @@ namespace console_bank_system
 {
 	public class BaseDecorator : Account
 	{
-		[BsonIgnore]
 		protected Account Account { get; set; }
 
-		public BaseDecorator(Account account)
+		protected BaseDecorator(Account account)
 		{
 			Account = account;
 		}
 		[BsonIgnore]
-		public ObjectId Id { 
+		public override ObjectId Id { 
 			get => Account.Id;
 			set => Account.Id = value;
-			
 		}
-		public new string Username
+		public override string Username
 		{
-			get => Account?.Username;
+			get => Account.Username;
 			set => Account.Username = value;
 		}
-		public new string Password
+		public override string Password
 		{
-			get => Account?.Password;
+			get => Account.Password;
 		}
-		public new string Email
+		public override string Email
 		{
-			get => Account?.Email;
+			get => Account.Email;
 		}
-		public new string Phone
+		public override string Phone
 		{
-			get => Account?.Phone;
+			get => Account.Phone;
 		}
-		public new AbstractMoneyState State 
+		public override AbstractMoneyState State 
 		{
-			get => Account?.State;
+			get => Account.State;
 		}
-		public new IStrategy Strategy 
+		public override IStrategy Strategy 
 		{
-			get => Account?.Strategy;
+			get => Account.Strategy;
 			set => Account.Strategy = value;
 		}
-		public new void ChangeState(AbstractMoneyState newState)
-		{
-			Account?.ChangeState(newState);
-		}
 
-		public new void ConvertToEUR()
+		public override void ConvertToEUR()
 		{
 			Account?.ConvertToEUR();
 		}
 
-		public new void ConvertToUSD()
+		public override void ConvertToUSD()
 		{
 			Account?.ConvertToUSD();
 		}
 
-		public new void ConvertToUAH()
+		public override void ConvertToUAH()
 		{
 			Account?.ConvertToUAH();
 		}
 
-		public new void ConvertToRUB()
+		public override void ConvertToRUB()
 		{
 			Account?.ConvertToRUB();
 		}
 
-		public new void WithDraw(double sum)
+		public override void WithDraw(double sum)
 		{
 			Account?.WithDraw(sum);
 		}
 
-		public new void TopUpThePhone(double sum)
+		public override void TopUpThePhone(double sum)
 		{
 			Account?.TopUpThePhone(sum);
 		}
 
-		public new void SendNotification()
+		public override void SendNotification()
 		{
 			Account?.SendNotification();
 		}

@@ -6,7 +6,7 @@ namespace console_bank_system.Menu
 	public class Invoker : Component
 	{
 		private AbstractCommand Command { get; set; }
-		public Invoker(string name, AbstractCommand command) : base(name)
+		public Invoker(string name, AbstractCommand command, Access access = Access.Default) : base(name, access)
 		{
 			Command = command;
 		}

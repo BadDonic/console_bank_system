@@ -7,18 +7,16 @@ namespace console_bank_system.MoneyState
 	public abstract class AbstractMoneyState
 	{
 		public double Amount { get; set; }
-		protected Account Account { get; set; }
 		public string Sign { get; protected set; }
 
-		protected AbstractMoneyState(double amount, Account account)
+		protected AbstractMoneyState(double amount)
 		{
 			Amount = amount;
-			Account = account;
 		}
 
-		public abstract void ConvertToEUR();
-		public abstract void ConvertToUSD();
-		public abstract void ConvertToUAH();
-		public abstract void ConvertToRUB();
+		public abstract AbstractMoneyState ConvertToEUR();
+		public abstract AbstractMoneyState ConvertToUSD();
+		public abstract AbstractMoneyState ConvertToUAH();
+		public abstract AbstractMoneyState ConvertToRUB();
 	}
 }

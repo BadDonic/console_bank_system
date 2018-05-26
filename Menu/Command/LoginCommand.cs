@@ -19,20 +19,19 @@ namespace console_bank_system.Menu.Command
 			Console.SetCursorPosition(23, 5);
 			string password = Console.ReadLine();
 			Console.Clear();
-			bool result = true;
 			Console.WriteLine("-----------------------------------------------");
 			try
 			{
+//				Bank.Login(new Account("Daniel", "qb9jzlqb"));
 				Bank.Login(new Account(username, password));
 				Console.WriteLine("\t\tDONE!");
-				result = false;
 			}
 			catch (Exception e)
 			{
 				Console.WriteLine(e.Message);
 			}
 			GetConsoleKey();
-			return result;
+			return true;
 		}
 	}
 }

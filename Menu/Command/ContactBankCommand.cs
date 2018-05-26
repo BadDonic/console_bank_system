@@ -10,8 +10,8 @@ namespace console_bank_system.Menu.Command
 
 		public override bool Execute()
 		{
-			Console.WriteLine("   Email: dzenik1999gmail.com");
-			Console.WriteLine("   Phone: (063) - 602 - 44 - 56");
+			Console.WriteLine("   Email: " + Bank.Email);
+			Console.WriteLine("   Phone: " + Bank.Phone);
 			GetConsoleKey();
 			return true;
 		}

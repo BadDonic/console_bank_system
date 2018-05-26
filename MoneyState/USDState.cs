@@ -5,28 +5,29 @@ namespace console_bank_system.MoneyState
 {
 	public class USDState : AbstractMoneyState
 	{
-		public USDState(double amount, Account account) : base(amount, account)
+		public USDState(double amount) : base(amount)
 		{
 			Sign = "$";
 		}
 
-		public override void ConvertToEUR()
+		public override AbstractMoneyState ConvertToEUR()
 		{
-			Account.ChangeState(new EURState(Amount * 0.85, Account));
+			return new EURState(Amount * 0.85);
 		}
 
-		public override void ConvertToUSD()
+		public override AbstractMoneyState ConvertToUSD()
 		{
+			return this;
 		}
 
-		public override void ConvertToUAH()
+		public override AbstractMoneyState ConvertToUAH()
 		{
-			Account.ChangeState(new UAHState(Amount * 26.11, Account));
+			return new UAHState(Amount * 26.11);
 		}
 
-		public override void ConvertToRUB()
+		public override AbstractMoneyState ConvertToRUB()
 		{
-			Account.ChangeState(new RUBState(Amount * 62.32, Account));
+			return new RUBState(Amount * 62.32);
 		}
 	}
 }

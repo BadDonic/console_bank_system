@@ -9,7 +9,7 @@
 		public override bool Execute()
 		{
 			Bank.LogOut();
-			return false;
+			return true;
 		}
 	}
 }

@@ -1,4 +1,6 @@
-﻿namespace console_bank_system.Menu.Command
+﻿using System;
+
+namespace console_bank_system.Menu.Command
 {
 	public class ConvertToEURCommand : AbstractCommand
 	{
@@ -8,6 +10,7 @@
 
 		public override bool Execute()
 		{
+			Console.WriteLine(Bank.Account.State);
 			Bank.Account.ConvertToEUR();
 			return true;
 		}

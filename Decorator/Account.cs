@@ -7,71 +7,68 @@ using MongoDB.Bson.Serialization.Attributes;
 
 namespace console_bank_system.Decorator
 {
-//	[BsonKnownTypes(typeof(BaseDecorator), typeof(EmailDecorator), typeof(FacebookDecorator), typeof(TelegramDecorator))]
+	[BsonKnownTypes(typeof(EmailDecorator), typeof(FacebookDecorator), typeof(TelegramDecorator), typeof(Account))]
+	[BsonDiscriminator("Account")]
 	public class Account
-	{		
-		public ObjectId Id { get; set; }
-		public string Username { get; set; }
-		public string Password { get; private set; }
-		public string Email { get; private set; }
-		public string Phone { get; private set; }
-		public AbstractMoneyState State { get; private set; }
-		public IStrategy Strategy { get; set; }
+	{
+		public virtual ObjectId Id { get; set; }
+		public virtual string Username { get; set; }
+		public virtual string Password { get; private set; }
+		public virtual string Email { get; private set; }
+		public virtual string Phone { get; private set; }
+		public virtual AbstractMoneyState State { get; private set; }
+		public virtual IStrategy Strategy { get; set; }
 		
-		protected Account()
-		{
-			Strategy = new CardMethod();
-			State = new USDState(0, this);
-		}
-
-		public Account(string username, string password) : this()
+		public Account(string username, string password)
 		{
 			Username = username;
 			Password = password;
+			Strategy = new CardMethod();
+			State = new USDState(0);
 		}
-		
-		public Account(string username, string password, string email, string phone, double amount) : this()
+
+		public Account(string username, string password, string email, string phone, double amount)
 		{
-			State = new USDState(amount, this);
+			State = new USDState(amount);
 			Username = username;
 			Password = password;
 			Email = email;
 			Phone = phone;
+			Strategy = new CardMethod();
 		}
 
-		public void ChangeState(AbstractMoneyState newState)
+		protected Account()
 		{
-			State = newState;
 		}
 
-		public void ConvertToEUR()
+		public virtual void ConvertToEUR()
 		{
-			State?.ConvertToEUR();
+			State = State?.ConvertToEUR();
 		}
 
-		public void ConvertToUSD()
+		public virtual void ConvertToUSD()
 		{
-			State?.ConvertToUSD();
+			State = State?.ConvertToUSD();
 		}
 
-		public void ConvertToUAH()
+		public virtual void ConvertToUAH()
 		{
-			State?.ConvertToUAH();
+			State = State?.ConvertToUAH();
 		}
 
-		public void ConvertToRUB()
+		public virtual void ConvertToRUB()
 		{
-			State?.ConvertToRUB();
+			State = State?.ConvertToRUB();
 		}
 
-		public void WithDraw(double sum)
+		public virtual void WithDraw(double sum)
 		{
 			if (State.Amount < sum)
 				throw new InvalidDataException("Insufficient funds!!!");
 			State.Amount = State.Amount - sum;
 		}
 
-		public void TopUpThePhone(double sum)
+		public virtual void TopUpThePhone(double sum)
 		{
 			Strategy?.TopUpThePhone(sum, this);
 		}

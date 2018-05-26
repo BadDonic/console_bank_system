@@ -10,7 +10,7 @@ namespace console_bank_system.Menu.Command
 
 		public override bool Execute()
 		{
-			Console.WriteLine("   " + Bank.Description);
+			Console.WriteLine("   " + Bank.Info);
 			GetConsoleKey();
 			return true;
 		}

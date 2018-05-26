@@ -2,15 +2,13 @@
 {
 	public abstract class Component
 	{
-		public string Name { get; protected set; }
-		public Component Parent { get; set; }
-		public Bank Bank { get; set; }
+		public string Name { get; private set; }
+		public Access Access {get; set; }
 
-		protected Component(string name, Component component, Bank bank)
+		protected Component(string name, Access access)
 		{
 			Name = name;
-			Parent = component;
-			Bank = bank;
+			Access = access;
 		}
 		public abstract bool Execute();
 	}

@@ -26,6 +26,11 @@ namespace console_bank_system.Menu.Command
 		public override bool Execute()
 		{
 			Bank.Account = new EmailDecorator(Bank.Account);
+			Console.WriteLine(Bank.Account);
+			Console.WriteLine(Bank.Account.Username);
+			Console.WriteLine(Bank.Account.State.Amount);
+			Console.WriteLine(Bank.Account.State.Sign);
+
 			Console.WriteLine("\t\tDONE!");
 			GetConsoleKey();
 			return true;

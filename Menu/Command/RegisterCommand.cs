@@ -32,20 +32,18 @@ namespace console_bank_system.Menu.Command
 			Console.SetCursorPosition(23, 11);
 			string amount = Console.ReadLine();
 			Console.Clear();
-			bool result = true;
 			Console.WriteLine("-----------------------------------------------");
 			try
 			{
 				Bank.SignUp(new Account(username, password, email, phone, Double.Parse(amount))).Wait();
 				Console.WriteLine("\t\tDONE!");
-				result = false;
 			}
 			catch (Exception e)
 			{
 				Console.WriteLine(e.Message);
 			}
 			GetConsoleKey();
-			return result;
+			return true;
 		}
 	}
 }
